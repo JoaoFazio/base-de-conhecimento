@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Base de conhecimento</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Base de conhecimento</h1>
-        <div>
-            <input type="text" placeholder="Digite uma linguagem de programação">
-            <button id="botao-busca" onclick="iniciarBusca()">Buscar</button>
-        </div>
+      <h1>Base de conhecimento</h1>
+      <div>
+        <input type="text" placeholder="Digite uma linguagem de programação" />
+        <button id="botao-busca" onclick="iniciarBusca()">Buscar</button>
+      </div>
     </header>
 
     <main>
-        <section></section>
+      <section class="card-container">
+        <article class="card">
+          <h2>Yasuo</h2>
+          <p>2013</p>
+          <p>
+            Um ioniano determinado que também é um ágil espadachim, capaz de
+            usar o próprio ar como arma.
+          </p>
+          <a href="https://www.leagueoflegends.com/pt-br/champions/yasuo/"
+            >Saiba mais</a
+          >
+        </article>
+        <article class="card">
+          <h2>Lux</h2>
+          <p>2010</p>
+          <p>
+            Uma jovem e poderosa maga da luz de Demacia, um reino onde a magia
+            inspira medo e desconfiança.
+          </p>
+          <a href="https://www.leagueoflegends.com/pt-br/champions/lux/"
+            >Saiba mais</a
+          >
+        </article>
+      </section>
     </main>
 
-    <footer>
     <footer class="footer">
-        <ul class="footer-links">
-            <li>
-                <a href="https://github.com/guilhermeonrails">GitHub</a>
-            </li>
-            <li>
-                <a href="https://www.alura.com.br/">Alura</a>
-            </li>
-        </ul>
+      <ul class="footer-links">
+        <li>
+          <a href="https://github.com/guilhermeonrails">GitHub</a>
+        </li>
+        <li>
+          <a href="https://www.alura.com.br/">Alura</a>
+        </li>
+      </ul>
     </footer>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Yasuo",
+    "descricao": "Um ioniano determinado que também é um ágil espadachim, capaz de usar o próprio ar como arma.",
+    "ano": "2013",
+    "link": "https://www.leagueoflegends.com/pt-br/champions/yasuo/"
+  },
+  {
+    "nome": "Lux",
+    "descricao": "Uma jovem e poderosa maga da luz de Demacia, um reino onde a magia inspira medo e desconfiança.",
+    "ano": "2010",
+    "link": "https://www.leagueoflegends.com/pt-br/champions/lux/"
+  },
+  {
+    "nome": "Garen",
+    "descricao": "Um nobre guerreiro conhecido como o Poder de Demacia, que luta na vanguarda do exército demaciano.",
+    "ano": "2010",
+    "link": "https://www.leagueoflegends.com/pt-br/champions/garen/"
+  },
+  {
+    "nome": "Jinx",
+    "descricao": "Uma criminosa impulsiva e maníaca de Zaun que adora causar estragos sem se preocupar com as consequências.",
+    "ano": "2013",
+    "link": "https://www.leagueoflegends.com/pt-br/champions/jinx/"
+  },
+  {
+    "nome": "Ahri",
+    "descricao": "Uma vastaya com aparência de raposa que pode manipular as emoções de sua presa e consumir sua essência.",
+    "ano": "2011",
+    "link": "https://www.leagueoflegends.com/pt-br/champions/ahri/"
+  }
+]
