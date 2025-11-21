@@ -49,7 +49,7 @@ window.onload = async () => {
     }
 };
 
-// --- FUNÇÃO DE BUSCA ---
+// --- FUNÇÃO DE BUSCA (Live Search) ---
 async function iniciarBusca() {
     const termoBusca = inputBusca.value.toLowerCase().trim();
     
@@ -60,6 +60,7 @@ async function iniciarBusca() {
 
     const dadosFiltrados = todosCampeoes.filter((campeao) => {
         const tagsTraduzidas = campeao.tags.map(tag => TRADUCAO_TAGS[tag].toLowerCase());
+        
         return campeao.name.toLowerCase().includes(termoBusca) || 
                campeao.title.toLowerCase().includes(termoBusca) ||
                tagsTraduzidas.some(tag => tag.includes(termoBusca));
@@ -92,6 +93,7 @@ btnLimpar.addEventListener("click", () => {
     renderizarCards(todosCampeoes);
 });
 
+// --- FILTRAGEM POR BOTÕES ---
 function filtrarPorTag(tag, elementoBotao) {
     inputBusca.value = "";
     btnLimpar.style.display = "none";
@@ -113,6 +115,7 @@ function filtrarPorTag(tag, elementoBotao) {
     renderizarCards(dadosFiltrados);
 }
 
+// --- RENDERIZAÇÃO ---
 function renderizarCards(lista) {
     cardContainer.innerHTML = ""; 
 
@@ -148,6 +151,7 @@ function renderizarCards(lista) {
     });
 }
 
+// --- MODAL DE SKINS ---
 async function abrirModalSkins(campeaoId) {
     const modal = document.getElementById("modal-skins-overlay");
     const modalContent = modal.querySelector(".modal-skins-content"); 
@@ -158,6 +162,9 @@ async function abrirModalSkins(campeaoId) {
     tituloModal.innerText = campeaoId;
     
     modalContent.style.backgroundImage = `linear-gradient(to bottom, rgba(9, 20, 40, 0.9), rgba(9, 20, 40, 0.95)), url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${campeaoId}_0.jpg')`;
+
+    // FIX: Reseta o scroll da galeria para o início
+    document.getElementById("skins-gallery-container").scrollLeft = 0;
 
     modal.classList.remove("hidden");
     document.body.style.overflow = "hidden";
@@ -193,6 +200,7 @@ function fecharModalSkins(event) {
     document.body.style.overflow = "auto";
 }
 
+// --- MODAL DE DETALHES ---
 async function abrirModal(campeaoId) {
     const campeao = todosCampeoes.find(c => c.id === campeaoId);
     if (!campeao) return;
@@ -204,6 +212,9 @@ async function abrirModal(campeaoId) {
     const desc = document.getElementById("modal-descricao");
     const statsBox = document.querySelector(".stats-box");
     const spellsContainer = document.getElementById("spells-container");
+
+    // FIX: Reseta o scroll do modal para o topo
+    modal.querySelector(".modal-content").scrollTop = 0;
 
     nome.innerText = campeao.name;
     titulo.innerText = campeao.title;
@@ -312,6 +323,7 @@ function fecharModal(event) {
     document.body.style.overflow = "auto";
 }
 
+// --- SCROLL E ATALHOS ---
 function irParaTopo() { window.scrollTo({ top: 0, behavior: "smooth" }); }
 function irParaFinal() { window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }); }
 
@@ -335,13 +347,13 @@ document.addEventListener("keydown", (e) => {
 
 botaoBusca.addEventListener("click", iniciarBusca);
 
-// --- SCROLL HORIZONTAL TURBINADO ---
+// --- SCROLL HORIZONTAL (Mouse Wheel) ---
 const skinsGallery = document.getElementById("skins-gallery-container");
 
 skinsGallery.addEventListener("wheel", (evt) => {
     if (!document.getElementById("modal-skins-overlay").classList.contains("hidden")) {
         evt.preventDefault(); 
-        // MULTIPLICADOR DE VELOCIDADE: 4x
+        // Aceleração 4x
         skinsGallery.scrollLeft += evt.deltaY * 4; 
     }
 });

@@ -495,11 +495,27 @@ article h2 {
   }
 }
 
+/* --- BOTÃO DE FECHAR (AGORA FLUTUANTE/STICKY) --- */
 .btn-fechar {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(0, 0, 0, 0.5);
+  /* Mágica: Fixa o botão no topo enquanto rola */
+  position: sticky;
+  top: 15px; /* Distância do topo */
+
+  /* Posicionamento na direita */
+  float: right;
+  margin-right: 15px;
+
+  /* Truque para ele não empurrar a imagem para baixo */
+  margin-bottom: -40px;
+
+  /* Visual */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Um pouco mais escuro para garantir contraste */
+  backdrop-filter: blur(5px); /* Efeito de vidro */
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -507,7 +523,7 @@ article h2 {
   color: #c89b3c;
   font-size: 1.2rem;
   cursor: pointer;
-  z-index: 20;
+  z-index: 100; /* Garante que fique acima de tudo, inclusive da Lore */
   transition: all 0.2s;
   display: flex;
   align-items: center;
@@ -517,6 +533,7 @@ article h2 {
 .btn-fechar:hover {
   background: #c89b3c;
   color: #000;
+  transform: scale(1.1);
 }
 
 /* Modal Detalhes */
