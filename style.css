@@ -21,6 +21,33 @@
   box-sizing: border-box;
 }
 
+/* --- BLOQUEIO DE SELEÇÃO (UI FEELING) --- */
+/* Impede que o usuário selecione texto ou arraste imagens em elementos de interface */
+header, 
+button, 
+.btn-filtro, 
+.card, 
+.status-badge, 
+.search-box i, /* Ícones da busca */
+img {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE10+/Edge */
+    user-select: none;         /* Padrão */
+    
+    /* Impede de arrastar a imagem (criar aquele fantasma da imagem) */
+    -webkit-user-drag: none; 
+}
+
+/* Mas PERMITE selecionar o texto de dentro do Modal (caso queiram copiar a Lore) */
+.modal-content p, 
+.modal-content h2, 
+.modal-content h3, 
+.modal-content h4 {
+    user-select: text;
+    cursor: text; /* Mostra cursor de texto aqui */
+}
+
 :root {
   --primary-color: #c89b3c; /* Dourado Hextech */
   --primary-hover: #e0b456; /* Dourado Brilhante */
@@ -55,15 +82,20 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 20, 40, 0.98) 0%,
-    rgba(10, 20, 40, 0.9) 100%
-  );
+  
+  /* MÁGICA AQUI: */
+  background-image: 
+    /* Gradiente escuro (90% em cima, 95% embaixo) para garantir leitura */
+    linear-gradient(to bottom, rgba(6, 12, 24, 0.4), rgba(6, 12, 24, 0.98)),
+    url('img/header-bg.jpg');
+    
+  background-size: cover;
+  background-position: center 40%; /* Ajustei para focar mais no centro da biblioteca */
+  
   border-bottom: 1px solid var(--primary-color);
-  position: relative;
+  position: relative; 
   z-index: 100;
-  backdrop-filter: blur(10px); /* Efeito de vidro fosco no fundo */
+  backdrop-filter: blur(10px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
