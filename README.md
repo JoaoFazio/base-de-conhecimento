@@ -16,7 +16,7 @@ Uma aplicação web interativa e imersiva que consome a API oficial da Riot Game
 
 ### 🖥️ Navegação e Gráficos Dinâmicos (Desktop)
 <div align="center">
-  <img src="https://github.com/JoaoFazio/base-de-conhecimento/blob/main/assets/demo-desktop.gif?raw=true" width="100%" alt="Demo Desktop" style="border-radius: 8px; border: 1px solid #c89b3c;" />
+  <img src="assets/demo-desktop.gif" width="100%" alt="Demo Desktop" style="border-radius: 8px; border: 1px solid #c89b3c;" />
 </div>
 
 <br>
