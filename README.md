@@ -16,14 +16,14 @@ Uma aplicação web interativa e imersiva que consome a API oficial da Riot Game
 
 ### 🖥️ Navegação e Gráficos Dinâmicos (Desktop)
 <div align="center">
-  <img src="assets/demo-desktop.gif" width="70%" alt="Demo Desktop" style="border-radius: 8px; border: 1px solid #c89b3c;" />
+  <img src="assets/demo-desktop.gif" width="30%" alt="Demo Desktop" style="border-radius: 8px; border: 1px solid #c89b3c;" />
 </div>
 
 <br>
 
 ### 🎨 Galeria de Skins Imersiva
 <div align="center">
-  <img src="assets/demo-skins-desktop.gif" width="70%" alt="Demo Skins" style="border-radius: 8px; border: 1px solid #c89b3c;" />
+  <img src="assets/demo-skins-desktop.gif" width="30%" alt="Demo Skins" style="border-radius: 8px; border: 1px solid #c89b3c;" />
 </div>
 
 <br>
