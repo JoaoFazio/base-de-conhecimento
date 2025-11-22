@@ -1,4 +1,5 @@
 # 💎 Códice Hextech | Guia de Campeões LoL
+🔗 Teste o projeto ao vivo: https://joaofazio.github.io/codice_hextec/
 
 ![Status](http://img.shields.io/static/v1?label=STATUS&message=FINALIZADO&color=0ac975&style=for-the-badge)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
