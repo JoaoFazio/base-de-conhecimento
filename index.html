@@ -3,17 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO e Metadados -->
     <meta
       name="description"
       content="Códice Hextech: A base de conhecimento definitiva de League of Legends. Veja status, lore, habilidades e skins de todos os campeões atualizados em tempo real."
     />
 
-    <!-- Folha de Estilo Principal -->
     <link rel="stylesheet" href="style.css" />
-
-    <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,31 +16,27 @@
       rel="stylesheet"
     />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- Open Graph (para compartilhamento em redes sociais) -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
     <meta property="og:title" content="Códice Hextech | Guia de Campeões LoL" />
     <meta
       property="og:description"
-      content="Explore a lore, status e skins de todos os campeões de LoL em tempo real. Projeto desenvolvido por João Gabriel Fazio Pauli."
+      content="Explore a lore, status e skins de todos os campeões de LoL em tempo real."
     />
     <meta
       property="og:image"
       content="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
     />
-    <meta
-      property="og:url"
-      content="https://joaofazio.github.io/base-de-conhecimento/"
-    />
+    <meta property="og:url" content="" />
     <meta name="theme-color" content="#c89b3c" />
 
-    <!-- Título da Página -->
     <title>Códice Hextech | Guia de Campeões</title>
   </head>
+
   <body>
-    <!-- ========= CABEÇALHO ========= -->
-    <header role="banner">
+    <header>
       <div class="header-title">
         <i class="ph-fill ph-diamond helper-icon"></i>
         <h1>Códice Hextech</h1>
@@ -53,24 +44,22 @@
           src="img/header-logo.png"
           alt="Logo LoL"
           class="header-logo-right"
-          width="auto"
-          height="45"
         />
       </div>
 
-      <!-- Badge para exibir a versão atual do patch do jogo -->
-      <div class="status-badge">
+      <div id="status-patch" class="status-badge">
         <span class="status-dot"></span>
         Patch <span id="numero-versao">Carregando...</span>
       </div>
 
-      <!-- Caixa de busca principal -->
-      <div class="search-box" role="search">
+      <div class="search-box">
+        <label for="input-busca" class="sr-only">Buscar Campeão</label>
         <i class="ph ph-magnifying-glass search-icon"></i>
         <input
           type="text"
           placeholder="Digite o nome de um campeão..."
           id="input-busca"
+          name="q"
           autocomplete="off"
         />
         <i
@@ -80,61 +69,42 @@
           role="button"
           tabindex="0"
         ></i>
-        <button id="botao-busca" onclick="iniciarBusca()">Buscar</button>
+        <button id="botao-busca">Buscar</button>
       </div>
 
-      <!-- Navegação de filtros por classe de campeão -->
-      <nav class="filtros-container" aria-label="Filtros por classe de campeão">
-        <button class="btn-filtro ativo" onclick="filtrarPorTag('Todos', this)">
-          Todos
-        </button>
-        <button class="btn-filtro" onclick="filtrarPorTag('Assassin', this)">
-          Assassinos
-        </button>
-        <button class="btn-filtro" onclick="filtrarPorTag('Fighter', this)">
-          Lutadores
-        </button>
-        <button class="btn-filtro" onclick="filtrarPorTag('Mage', this)">
-          Magos
-        </button>
-        <button class="btn-filtro" onclick="filtrarPorTag('Marksman', this)">
-          Atiradores
-        </button>
-        <button class="btn-filtro" onclick="filtrarPorTag('Support', this)">
-          Suportes
-        </button>
-        <button class="btn-filtro" onclick="filtrarPorTag('Tank', this)">
-          Tanques
-        </button>
+      <nav class="filtros-container">
+        <button class="btn-filtro ativo" data-tag="Todos">Todos</button>
+        <button class="btn-filtro" data-tag="Assassin">Assassinos</button>
+        <button class="btn-filtro" data-tag="Fighter">Lutadores</button>
+        <button class="btn-filtro" data-tag="Mage">Magos</button>
+        <button class="btn-filtro" data-tag="Marksman">Atiradores</button>
+        <button class="btn-filtro" data-tag="Support">Suportes</button>
+        <button class="btn-filtro" data-tag="Tank">Tanques</button>
       </nav>
     </header>
 
-    <!-- ========= CONTEÚDO PRINCIPAL ========= -->
-    <main id="main-content">
-      <!-- Spinner de carregamento, exibido enquanto os dados da API são buscados -->
+    <main>
       <div id="loading-spinner" class="loading-container">
         <div class="spinner"></div>
         <p>Invocando Campeões...</p>
       </div>
-
-      <!-- Contêiner onde os cards dos campeões serão renderizados pelo JavaScript -->
       <section class="card-container"></section>
     </main>
 
-    <!-- ========= MODAL DE DETALHES DO CAMPEÃO ========= -->
     <div id="modal-overlay" class="modal-overlay hidden">
-      <div class="modal-content" onclick="event.stopPropagation()">
-        <button class="btn-fechar" aria-label="Fechar modal">X</button>
+      <div class="modal-content">
+        <button class="btn-fechar" aria-label="Fechar modal">
+          <i class="ph-bold ph-x"></i>
+        </button>
 
         <div class="modal-body">
           <div class="modal-img-container">
             <img id="modal-img" src="" alt="Splash Art" />
             <div class="modal-header-text">
-              <h2 id="modal-nome">Nome do Campeão</h2>
-              <p id="modal-titulo">Título do Campeão</p>
+              <h2 id="modal-nome">Nome</h2>
+              <p id="modal-titulo">Título</p>
             </div>
           </div>
-
           <div class="modal-info">
             <div class="info-coluna-lore">
               <h3>Lore</h3>
@@ -147,31 +117,41 @@
               </div>
             </div>
           </div>
-
           <div class="spells-section">
             <h3>Habilidades</h3>
             <div id="spells-container" class="spells-container"></div>
+          </div>
+          <div class="tips-section">
+            <div class="tips-box">
+              <h3>Jogando com</h3>
+              <ul id="ally-tips-list"></ul>
+            </div>
+            <div class="tips-box">
+              <h3>Jogando contra</h3>
+              <ul id="enemy-tips-list"></ul>
+            </div>
+          </div>
+
+          <div class="build-links">
+            <p>Ver build e runas atualizadas em:</p>
+            <div class="build-buttons">
+              <a id="link-ugg" href="#" target="_blank" class="btn-build">
+                <img src="img/icon-ugg.jpg" alt="U.GG" />
+                U.GG
+              </a>
+              <a id="link-opgg" href="#" target="_blank" class="btn-build">
+                <img src="img/icon-opgg.png" alt="OP.GG" />
+                OP.GG
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ========= MODAL DA GALERIA DE SKINS ========= -->
-    <div
-      id="modal-skins-overlay"
-      class="modal-overlay hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="skins-campeao-nome"
-    >
-      <div
-        class="modal-content modal-skins-content"
-        onclick="event.stopPropagation()"
-      >
-        <!-- Botão para fechar o modal de skins -->
-        <button class="btn-fechar" aria-label="Fechar galeria">
-          <i class="ph ph-x"></i>
-        </button>
+    <div id="modal-skins-overlay" class="modal-overlay hidden">
+      <div class="modal-content modal-skins-content">
+        <button class="btn-fechar" aria-label="Fechar galeria">X</button>
 
         <div class="skins-header">
           <h2 id="skins-campeao-nome">Campeão</h2>
@@ -179,15 +159,10 @@
             Galeria de Visuais
           </p>
         </div>
-
-        <!-- Contêiner onde as skins serão renderizadas -->
-        <div class="skins-gallery" id="skins-gallery-container">
-          <!-- As imagens das skins serão inseridas aqui via JavaScript -->
-        </div>
+        <div class="skins-gallery" id="skins-gallery-container"></div>
       </div>
     </div>
 
-    <!-- ========= BOTÕES DE CONTROLE DE SCROLL ========= -->
     <div class="scroll-controls">
       <button
         id="btn-topo"
@@ -205,55 +180,41 @@
       </button>
     </div>
 
-    <!-- ========= RODAPÉ ========= -->
     <footer class="footer">
       <div class="footer-content">
-        <!-- Links para redes sociais e portfólio -->
         <div class="social-links">
           <a
             href="https://github.com/joaoFazio"
             target="_blank"
-            aria-label="Acesse meu GitHub"
-          >
-            <i class="ph-fill ph-github-logo"></i>
-          </a>
+            aria-label="GitHub"
+            ><i class="ph-fill ph-github-logo"></i
+          ></a>
           <a
             href="https://www.linkedin.com/in/joão-gabriel-fazio-861186338/"
             target="_blank"
-            aria-label="Acesse meu LinkedIn"
-          >
-            <i class="ph-fill ph-linkedin-logo"></i>
-          </a>
-          <a
-            href="https://www.alura.com.br/"
-            target="_blank"
-            aria-label="Conheça a Alura"
-          >
-            <i class="ph-fill ph-student"></i>
-          </a>
+            aria-label="LinkedIn"
+            ><i class="ph-fill ph-linkedin-logo"></i
+          ></a>
+          <a href="https://www.alura.com.br/" target="_blank" aria-label="Alura"
+            ><i class="ph-fill ph-student"></i
+          ></a>
         </div>
-        <!-- Créditos de desenvolvimento -->
         <div class="footer-credits">
           <p>
-            Desenvolvido por <strong>João Gabriel Fazio Pauli</strong> durante a
-            <span class="highlight">Imersão Dev da Alura</span>.
+            Desenvolvido por <strong>João Gabriel Fazio Pauli</strong> na
+            <span class="highlight">Imersão Dev</span>.
           </p>
         </div>
         <div class="footer-divider"></div>
-        <!-- Aviso legal sobre o uso de ativos da Riot Games -->
         <div class="footer-legal">
           <p>
             Este projeto foi criado sob a política de "Legal Jibber Jabber" da
-            Riot Games usando ativos de propriedade da Riot Games. A Riot Games
-            não endossa ou patrocina este projeto.
+            Riot Games usando ativos de propriedade da Riot Games.
           </p>
         </div>
       </div>
     </footer>
 
-    <!-- Scripts (Chart.js para gráficos, Phosphor Icons e o script principal da aplicação) -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="script.js"></script>
   </body>
 </html>

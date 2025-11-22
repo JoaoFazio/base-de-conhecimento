@@ -1,363 +1,545 @@
+/* Importa a fonte 'Quicksand' do Google Fonts para ser usada em toda a aplicação. */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 /* --- RESET & VARIÁVEIS --- */
+
+/* Reset universal que altera o modelo de caixa para 'border-box', facilitando o cálculo de dimensões. */
 * {
   box-sizing: border-box;
 }
 
+/* Define variáveis CSS globais (custom properties) para reutilizar cores e valores, facilitando a manutenção do tema. */
 :root {
   --primary-color: #c89b3c; /* Dourado Hextech */
+
   --primary-hover: #e0b456; /* Dourado Brilhante */
+
   --secondary-color: #f0e6d2; /* Texto Claro (Pergaminho) */
+
   --tertiary-color: #5b5a56; /* Cinza Metal */
+
   --bg-color: #0a1428; /* Azul Fundo Escuro */
+
   --card-bg: rgba(9, 20, 40, 0.95); /* Fundo do Card */
 }
 
 /* --- BODY COM BACKGROUND --- */
+
 body {
   margin: 0;
+
   color: var(--secondary-color);
+
   font-family: "Quicksand", sans-serif;
+
+  /* Configura um layout de coluna flexível para criar o efeito "sticky footer", onde o rodapé permanece no final da página. */
   display: flex;
+
   flex-direction: column;
+
   min-height: 100vh;
 
   background-color: var(--bg-color);
 
-  /* Apenas a imagem, sem gradiente */
   background-image: url("img/background.jpg");
 
   background-size: cover;
+
   background-position: center center;
-  background-attachment: fixed; /* Efeito Parallax */
+
+  background-attachment: fixed; /* Cria um efeito de parallax, mantendo o fundo fixo durante a rolagem. */
 }
 
 /* --- HEADER HEXTECH --- */
+
 header {
   padding: 1.5rem 2rem;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   gap: 1.5rem;
 
-  /* Textura da Biblioteca com Gradiente Escuro */
   background-image: linear-gradient(
-      to bottom,
+      /* Gradiente sobreposto a uma imagem de fundo para melhor legibilidade do texto. */
+        to bottom,
+
       rgba(6, 12, 24, 0.5),
       rgba(6, 12, 24, 0.9)
     ),
     url("img/header-bg.jpg");
 
   background-size: cover;
+
   background-position: center 40%;
 
   border-bottom: 1px solid var(--primary-color);
+
   position: relative;
-  z-index: 100;
-  backdrop-filter: blur(5px);
+
+  z-index: 100; /* Garante que o header fique acima de outros elementos da página. */
+
+  backdrop-filter: blur(
+    5px
+  ); /* Aplica um efeito de vidro fosco (blur) nos elementos que estão atrás do header. */
+
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Título e Ícone Esquerdo */
+
 .header-title {
   display: flex;
+
   align-items: center;
+
   gap: 0.8rem;
+
   justify-content: center;
+
   text-align: center;
 }
 
 .header-title i {
   font-size: 2rem;
+
   color: var(--primary-color);
-  filter: drop-shadow(0 0 5px var(--primary-color));
+
+  filter: drop-shadow(
+    0 0 5px var(--primary-color)
+  ); /* 'drop-shadow' aplica sombra ao contorno do ícone, não à sua caixa. */
+
   animation: flutuar 3s ease-in-out infinite;
+
   flex-shrink: 0;
 }
 
 header h1 {
   font-size: 2rem;
+
   margin: 0;
+
   color: var(--secondary-color);
+
   text-transform: uppercase;
+
   letter-spacing: 3px;
+
   font-weight: 700;
 
-  background: linear-gradient(to bottom, #f0e6d2 0%, #c89b3c 100%);
+  background: linear-gradient(
+    to bottom,
+    #f0e6d2 0%,
+    #c89b3c 100%
+  ); /* Técnica para criar um texto com gradiente. */
+
   -webkit-background-clip: text;
+
   background-clip: text;
+
   -webkit-text-fill-color: transparent;
 
   text-shadow: 0 2px 10px rgba(200, 155, 60, 0.3);
 }
 
 /* Logo à Direita (Imagem) */
+
 .header-logo-right {
   height: 45px;
+
   width: auto;
+
   margin-left: 1rem;
+
   opacity: 0.9;
+
   filter: drop-shadow(0 0 5px rgba(200, 155, 60, 0.6));
+
   transition: all 0.3s ease;
+
   flex-shrink: 0;
 }
 
 .header-logo-right:hover {
   opacity: 1;
+
   transform: scale(1.1) rotate(5deg);
+
   filter: drop-shadow(0 0 15px rgba(200, 155, 60, 0.9));
+
   cursor: pointer;
 }
 
 /* --- BADGE DE VERSÃO --- */
+
 .status-badge {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
+
   background: rgba(5, 10, 20, 0.8);
+
   border: 1px solid rgba(200, 155, 60, 0.5);
+
   box-shadow: 0 0 15px rgba(200, 155, 60, 0.15);
+
   padding: 6px 16px;
+
   border-radius: 30px;
+
   font-size: 0.85rem;
+
   color: var(--secondary-color);
+
   margin-top: -10px;
+
   margin-bottom: 1.5rem;
+
   font-weight: 600;
+
   letter-spacing: 2px;
+
   text-transform: uppercase;
+
   backdrop-filter: blur(5px);
+
   transition: all 0.3s ease;
 }
 
 .status-badge:hover {
   border-color: var(--primary-color);
+
   box-shadow: 0 0 20px rgba(200, 155, 60, 0.3);
+
   transform: translateY(-2px);
 }
 
 .status-dot {
   width: 8px;
+
   height: 8px;
+
   background-color: #0ac975;
+
   border-radius: 50%;
+
   box-shadow: 0 0 10px #0ac975;
+
   animation: pulsarSuave 2s infinite ease-out;
 }
 
 #numero-versao {
   color: var(--primary-color);
+
   font-weight: 800;
+
   font-size: 0.95rem;
 }
+
+/* Animação de pulsação para o ponto de status, indicando atividade. */
 
 @keyframes pulsarSuave {
   0% {
     box-shadow: 0 0 0 0 rgba(10, 201, 117, 0.7);
   }
+
   70% {
     box-shadow: 0 0 0 8px rgba(10, 201, 117, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(10, 201, 117, 0);
   }
 }
 
 /* --- BARRA DE BUSCA --- */
+
 .search-box {
   display: flex;
+
   align-items: center;
+
   background: #1e2328;
+
   border: 1px solid var(--tertiary-color);
+
   border-radius: 50px;
+
   padding: 0.3rem 0.5rem 0.3rem 1.2rem;
+
   width: 100%;
+
   max-width: 600px;
+
   transition: all 0.3s ease;
+
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Melhora a UX destacando a caixa de busca quando qualquer elemento dentro dela (como o input) recebe foco. */
 .search-box:focus-within {
   border-color: var(--primary-color);
+
   box-shadow: 0 0 15px rgba(200, 155, 60, 0.2),
     inset 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .search-icon {
   font-size: 1.2rem;
+
   color: var(--tertiary-color);
+
   margin-right: 0.5rem;
 }
 
 .search-box input {
   flex-grow: 1;
+
   background: transparent;
+
   border: none;
+
   color: var(--secondary-color);
+
   font-size: 1rem;
+
   outline: none;
+
   font-family: inherit;
+
   min-width: 0;
 }
 
 .search-box input::placeholder {
   color: #6a6a70;
+
   font-style: italic;
 }
 
-/* Botão X de limpar busca */
-.btn-limpar {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  display: none; /* Começa escondido */
-  margin-right: 0.8rem;
-  cursor: pointer;
-}
+/* Botão X */
 
 #btn-limpar {
+  cursor: pointer;
+
   font-size: 1.2rem;
+
   color: var(--tertiary-color);
+
+  margin-right: 0.8rem;
+
+  display: none;
+
   transition: color 0.3s;
 }
 
 #btn-limpar:hover {
   color: var(--primary-color);
-}
-.btn-limpar:hover i {
+
   transform: scale(1.1);
 }
 
 #botao-busca {
   padding: 0.6rem 1.5rem;
+
   border-radius: 30px;
+
   border: none;
+
   cursor: pointer;
+
   background: linear-gradient(135deg, var(--primary-color) 0%, #a07a2b 100%);
+
   color: #091428;
+
   font-weight: 800;
+
   font-size: 0.9rem;
+
   text-transform: uppercase;
+
   transition: all 0.3s;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 #botao-busca:hover {
   transform: scale(1.05);
+
   box-shadow: 0 0 15px rgba(200, 155, 60, 0.5);
+
   color: #fff;
 }
+
+/* Animação sutil de flutuação para o ícone do cabeçalho. */
 
 @keyframes flutuar {
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }
 }
 
 /* --- FILTROS --- */
+
 .filtros-container {
   display: flex;
+
   justify-content: center;
+
   gap: 1rem;
+
   padding: 1rem 2rem;
+
   background: transparent;
+
   width: 100%;
+
   flex-wrap: wrap;
 }
 
 .btn-filtro {
   background: transparent;
+
   border: 1px solid var(--tertiary-color);
+
   color: var(--secondary-color);
+
   padding: 0.5rem 1.5rem;
+
   border-radius: 20px;
+
   cursor: pointer;
+
   font-family: inherit;
+
   font-weight: 600;
+
   font-size: 0.9rem;
+
   transition: all 0.3s ease;
+
   text-transform: uppercase;
 }
 
 .btn-filtro:hover {
   border-color: var(--primary-color);
+
   color: var(--primary-color);
+
   transform: translateY(-2px);
 }
 
 .btn-filtro.ativo {
   background: var(--primary-color);
+
   color: var(--bg-color);
+
   border-color: var(--primary-color);
+
   box-shadow: 0 0 15px rgba(200, 155, 60, 0.3);
 }
 
 /* --- MAIN & GRID --- */
+
 main {
-  flex: 1;
+  flex: 1; /* Faz com que o main ocupe todo o espaço vertical disponível, empurrando o footer para baixo (parte do sticky footer). */
+
   width: 100%;
+
   max-width: 1400px;
+
   margin: 0 auto;
+
   padding: 2rem;
 }
 
 .card-container {
   display: grid;
+
+  /* Cria um grid responsivo que gera colunas com no mínimo 280px. As colunas se ajustam automaticamente para preencher o espaço. */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
   gap: 2rem;
 }
 
 @keyframes aparecerSuave {
   from {
     opacity: 0;
+
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
 }
 
 article.card {
   background: var(--card-bg);
+
   border: 1px solid #3c3c41;
+
   border-radius: 8px;
+
   overflow: hidden;
+
   display: flex;
+
   flex-direction: column;
+
   transition: all 0.3s ease;
+
   height: 100%;
-  animation: aparecerSuave 0.6s ease-out forwards;
+
+  animation: aparecerSuave 0.6s ease-out forwards; /* 'forwards' mantém o estado final da animação (opacity: 1, transform: translateY(0)). */
+
   opacity: 0;
 }
 
 article.card:hover {
   transform: translateY(-8px);
+
   border-color: var(--primary-color);
+
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 10px rgba(200, 155, 60, 0.1);
 }
 
 .card-img-wrapper {
   width: 100%;
+
   height: 300px;
+
   overflow: hidden;
+
   border-bottom: 1px solid #3c3c41;
+
   position: relative;
+
   background-color: #050a14;
-  aspect-ratio: 308 / 560;
+
+  aspect-ratio: 308 / 560; /* Mantém a proporção da imagem (308x560) independentemente da largura do card. */
 }
 
 .card-img-wrapper img {
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
+
   object-position: top center;
+
   transition: transform 0.5s ease;
 }
 
@@ -367,235 +549,386 @@ article.card:hover .card-img-wrapper img {
 
 .card-content {
   padding: 1.5rem;
+
   display: flex;
+
   flex-direction: column;
+
   flex-grow: 1;
 }
 
 article h2 {
   margin: 0;
+
   font-size: 1.5rem;
+
   color: var(--secondary-color);
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
 }
 
 .titulo {
   color: var(--primary-color);
+
   font-style: italic;
+
   font-size: 0.9rem;
+
   margin-top: 0.2rem;
+
   margin-bottom: 1rem;
 }
 
 .descricao {
   font-size: 0.9rem;
+
   line-height: 1.5;
+
   color: #a0a0a0;
+
   margin-bottom: 1.5rem;
+
+  /* Técnica para truncar o texto após 3 linhas, adicionando "..." no final para descrições longas. */
   display: -webkit-box;
+
   -webkit-line-clamp: 3;
+
   line-clamp: 3;
+
   -webkit-box-orient: vertical;
+
   overflow: hidden;
 }
 
 .tags {
-  margin-top: auto;
+  margin-top: auto; /* Empurra as tags para o final do card, alinhando-as na parte inferior, independente do tamanho da descrição. */
+
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 0.5rem;
+
   margin-bottom: 1.2rem;
 }
 
 .tags span {
   background: #1c2530;
+
   color: #cdbe91;
+
   font-size: 0.75rem;
+
   padding: 4px 8px;
+
   border-radius: 4px;
+
   border: 1px solid #4a4a4a;
+
   text-transform: uppercase;
 }
 
 /* --- BOTÕES DO CARD --- */
+
 .btn-detalhes {
   text-align: center;
+
   display: block;
+
   width: 100%;
+
   padding: 0.8rem;
+
   color: var(--primary-color);
+
   background: transparent;
+
   border: 1px solid var(--primary-color);
+
   border-radius: 4px;
+
   transition: all 0.3s ease;
+
   cursor: pointer;
+
   font-family: inherit;
+
   font-weight: 600;
+
   font-size: 0.9rem;
+
   text-transform: uppercase;
 }
 
 .btn-detalhes:hover {
   background: var(--primary-color);
+
   color: var(--bg-color);
+
   box-shadow: 0 0 15px rgba(200, 155, 60, 0.3);
 }
 
 .btn-skins {
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
+
   gap: 5px;
+
   background: transparent;
+
   border: 1px solid var(--tertiary-color);
+
   color: var(--tertiary-color);
+
   padding: 0.4rem 1rem;
+
   border-radius: 20px;
+
   font-size: 0.8rem;
+
   cursor: pointer;
+
   transition: all 0.3s ease;
+
   margin-left: auto;
+
   margin-bottom: 0.8rem;
+
   font-weight: 600;
+
   text-transform: uppercase;
 }
 
 .btn-skins:hover {
   border-color: var(--primary-color);
+
   color: var(--primary-color);
+
   box-shadow: 0 0 10px rgba(200, 155, 60, 0.2);
 }
 
 /* --- MODAIS --- */
+
 .modal-overlay {
   position: fixed;
+
   top: 0;
+
   left: 0;
+
   width: 100%;
+
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+
+  background: rgba(
+    0,
+    0,
+    0,
+    0.85
+  ); /* Fundo semi-transparente para o overlay do modal. */
+
   backdrop-filter: blur(8px);
+
   z-index: 1000;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
+
   opacity: 1;
+
   transition: opacity 0.3s ease;
 }
 
 .modal-overlay.hidden {
   opacity: 0;
+
   pointer-events: none;
 }
 
 .modal-content {
   background: #091428;
+
   border: 2px solid #c89b3c;
+
   width: 90%;
+
   max-width: 950px;
+
   max-height: 90vh;
+
   overflow-y: auto;
+
   position: relative;
+
   border-radius: 8px;
+
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(200, 155, 60, 0.2);
+
   animation: scaleUp 0.3s ease;
 }
+
+/* Animação de surgimento para o modal. */
 
 @keyframes scaleUp {
   from {
     transform: scale(0.8);
+
     opacity: 0;
   }
+
   to {
     transform: scale(1);
+
     opacity: 1;
   }
 }
 
+/* Botão de Fechar (Sticky) */
+
 .btn-fechar {
-  position: sticky;
+  position: sticky; /* Mantém o botão fixo no topo da área visível do modal durante a rolagem. */
+
   top: 15px;
+
   float: right;
+
   margin-right: 15px;
+
   margin-bottom: -40px;
+
   background: rgba(0, 0, 0, 0.6);
+
   backdrop-filter: blur(5px);
+
   width: 40px;
+
   height: 40px;
+
   border-radius: 50%;
+
   border: 1px solid #c89b3c;
+
   color: #c89b3c;
+
   font-size: 1.2rem;
+
   cursor: pointer;
-  z-index: 1010;
+
+  z-index: 2000;
+
   transition: all 0.2s;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
+  pointer-events: auto; /* Garante que o botão seja clicável, mesmo dentro de um container com pointer-events: none. */
 }
 
 .btn-fechar:hover {
   background: #c89b3c;
+
   color: #000;
+
   transform: scale(1.1);
 }
 
 /* Modal Detalhes */
+
 .modal-img-container {
   width: 100%;
+
   height: 350px;
+
   position: relative;
 }
 
+/* Pseudo-elemento para criar um gradiente de sombra sobre a imagem do modal, melhorando a legibilidade do texto sobreposto. */
 .modal-img-container::after {
   content: "";
+
   position: absolute;
+
   bottom: 0;
+
   left: 0;
+
   width: 100%;
+
   height: 100%;
+
   background: linear-gradient(to bottom, transparent 30%, #091428 100%);
+
   pointer-events: none;
 }
 
 #modal-img {
   width: 100%;
+
   height: 100%;
+
   object-fit: cover;
+
   object-position: top center;
 }
 
 .modal-header-text {
   position: absolute;
+
   bottom: 20px;
+
   left: 30px;
+
   z-index: 10;
+
   width: 90%;
 }
 
 .modal-header-text h2 {
   font-size: 3.5rem;
+
   margin: 0;
+
   color: #fff;
+
   text-transform: uppercase;
+
   text-shadow: 3px 3px 0 #000, 0 0 20px rgba(0, 0, 0, 0.8);
+
   line-height: 1;
 }
 
 .modal-header-text p {
   font-size: 1.5rem;
+
   margin: 5px 0 0 0;
+
   color: #e0b456;
+
   font-style: italic;
+
   text-shadow: 2px 2px 0 #000;
 }
 
 .modal-info {
   padding: 2rem 2rem 3rem 2rem;
+
   display: grid;
+
   grid-template-columns: 1.5fr 1fr;
+
   gap: 3rem;
+
   align-items: start;
 }
 
@@ -603,330 +936,505 @@ article h2 {
 .stats-box h3,
 .spells-section h3 {
   color: #c89b3c;
+
   font-size: 1.2rem;
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
+
   border-bottom: 1px solid #3c3c41;
+
   padding-bottom: 0.5rem;
+
   margin-top: 0;
+
   margin-bottom: 1rem;
 }
 
 .info-coluna-lore p {
   line-height: 1.8;
+
   color: #c0c0c0;
+
   font-size: 1.05rem;
+
   text-align: justify;
+
   max-height: 400px;
+
   overflow-y: auto;
+
   padding-right: 1rem;
 }
 
 .info-coluna-lore p::-webkit-scrollbar {
   width: 6px;
 }
+
 .info-coluna-lore p::-webkit-scrollbar-track {
   background: #0a1428;
+
   border-radius: 3px;
 }
+
 .info-coluna-lore p::-webkit-scrollbar-thumb {
   background-color: #c89b3c;
+
   border-radius: 10px;
 }
 
 .chart-container {
   position: relative;
+
   height: 300px;
+
   width: 100%;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 }
 
 .stats-box[style*="display: none"] {
   display: none !important;
 }
+
 .stats-box[style*="display: none"] + .info-coluna-lore,
 .modal-info:has(.stats-box[style*="display: none"]) {
+  /* Se a caixa de stats estiver oculta, a coluna de lore ocupa todo o espaço. */
   grid-template-columns: 1fr;
 }
 
 /* Loading Spinner */
+
 .loading-container {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   padding: 4rem;
+
   gap: 1rem;
-  grid-column: 1/-1;
+
+  grid-column: 1/-1; /* Faz com que o container de loading ocupe todas as colunas do grid. */
 }
 
 .spinner {
   width: 50px;
+
   height: 50px;
+
   border: 4px solid rgba(200, 155, 60, 0.3);
+
   border-top: 4px solid var(--primary-color);
+
   border-radius: 50%;
+
   animation: spin 1s linear infinite;
+
   box-shadow: 0 0 15px rgba(200, 155, 60, 0.2);
 }
+
+/* Animação de rotação para o spinner de carregamento. */
 
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
 /* Seção Habilidades */
+
 .spells-section {
   padding: 0 2rem 2rem 2rem;
 }
+
 .spells-container {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 1.5rem;
+
   margin-top: 1rem;
 }
+
 .spell-card {
   display: flex;
+
   align-items: center;
+
   gap: 1rem;
+
   background: rgba(5, 10, 20, 0.5);
+
   padding: 0.8rem;
+
   border-radius: 8px;
+
   border: 1px solid #3c3c41;
-  flex: 1 1 300px;
+
+  flex: 1 1 300px; /* Permite que o card cresça, encolha e tenha uma base de 300px, adaptando-se ao espaço. */
+
   transition: all 0.2s;
 }
+
 .spell-card:hover {
   border-color: var(--primary-color);
+
   background: rgba(200, 155, 60, 0.1);
 }
+
 .spell-img-wrapper {
   position: relative;
+
   width: 64px;
+
   height: 64px;
+
   flex-shrink: 0;
 }
+
 .spell-img-wrapper img {
   width: 100%;
+
   height: 100%;
+
   border: 2px solid #c89b3c;
+
   border-radius: 4px;
 }
+
 .spell-key {
   position: absolute;
+
   bottom: -5px;
+
   right: -5px;
+
   background: #091428;
+
   color: #c89b3c;
+
   border: 1px solid #c89b3c;
+
   border-radius: 50%;
+
   width: 20px;
+
   height: 20px;
+
   font-size: 0.7rem;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-weight: bold;
 }
+
 .spell-info h4 {
   color: #f0e6d2;
+
   margin: 0 0 0.3rem 0;
+
   font-size: 1rem;
 }
+
 .spell-info p {
   margin: 0;
+
   color: #a0a0a0;
+
   font-size: 0.9rem;
+
   line-height: 1.5;
 }
 
-/* Modal Skins (Cinemático) */
+/* Modal Skins */
+
 .modal-skins-content {
   max-width: 1200px;
+
   background-color: #091428;
 
-  /* Background gradiente + Imagem */
   background-image: linear-gradient(
       to bottom,
+
       rgba(9, 20, 40, 0.2) 0%,
+
       rgba(9, 20, 40, 1) 80%
     ),
     url("");
 
   background-size: cover;
+
   background-position: center 15%;
+
   background-blend-mode: normal;
+
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+
   border: 1px solid var(--primary-color);
+
   overflow: hidden;
 }
 
 .skins-header {
-  padding: 4rem 2rem 2rem 2rem; /* Mais espaço em cima */
+  padding: 4rem 2rem 2rem 2rem;
+
   text-align: center;
+
   border-bottom: none;
+
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
 .skins-header h2 {
   color: #fff;
+
   margin: 0;
+
   font-size: 3rem;
+
   text-transform: uppercase;
+
   letter-spacing: 4px;
+
   font-weight: 800;
 }
 
 .skins-header p {
   color: var(--primary-color);
+
   font-size: 1.2rem;
+
   margin-top: 0.5rem;
+
   font-weight: 600;
+
   text-shadow: 0 2px 10px rgba(0, 0, 0, 1);
 }
 
 .skins-gallery {
   display: flex;
+
   overflow-x: auto;
+
   gap: 2rem;
-  padding: 0 3rem 3rem 3rem; /* Padding inferior maior */
-  scroll-behavior: smooth;
+
+  padding: 0 3rem 3rem 3rem;
+
+  scroll-behavior: smooth; /* Habilita a rolagem suave na galeria de skins ao usar JS para rolar. */
+
   scrollbar-width: thin;
+
   scrollbar-color: var(--primary-color) transparent;
 }
 
 .skin-card {
-  flex: 0 0 auto;
-  width: 260px;
+  flex: 0 0 260px; /* Impede que os cards de skin encolham ou cresçam, mantendo seu tamanho fixo de 260px. */
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   background: rgba(5, 10, 20, 0.7);
+
   backdrop-filter: blur(5px);
+
   border: 1px solid rgba(200, 155, 60, 0.3);
+
   border-radius: 8px;
+
   overflow: hidden;
+
   transition: all 0.3s ease;
 }
 
 .skin-card:hover {
   transform: translateY(-10px);
+
   border-color: var(--primary-color);
+
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
 .skin-card img {
   width: 100%;
+
   height: auto;
+
   display: block;
 }
 
 .skin-card p {
   padding: 1rem;
+
   margin: 0;
+
   color: #f0e6d2;
+
   text-align: center;
+
   font-size: 0.9rem;
 }
 
-/* --- FOOTER PROFISSIONAL --- */
+/* --- FOOTER --- */
+
 .footer {
   background: linear-gradient(180deg, rgba(6, 12, 24, 0.95) 0%, #010a13 100%);
+
   padding: 3rem 1rem;
+
+  /* 'margin-top: auto' garante que o rodapé fique no final da página, mesmo em páginas com pouco conteúdo. */
+
   margin-top: auto;
+
   border-top: 1px solid var(--primary-color);
+
   position: relative;
+
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .footer::before {
   content: "";
+
   position: absolute;
+
   top: 0;
+
   left: 0;
+
   width: 100%;
+
   height: 1px;
+
   background: linear-gradient(
     90deg,
     transparent 0%,
+
     var(--primary-color) 50%,
+
     transparent 100%
   );
+
   box-shadow: 0 0 10px var(--primary-color);
 }
 
 .footer-content {
   max-width: 800px;
+
   margin: 0 auto;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   text-align: center;
+
   gap: 1.5rem;
 }
 
 /* Ícones Sociais */
+
 .social-links {
   display: flex;
+
   gap: 1.5rem;
 }
 
 .social-links a {
   color: var(--tertiary-color);
+
   font-size: 2rem;
+
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   text-decoration: none;
 }
 
 .social-links a:hover {
   color: var(--primary-color);
+
   transform: translateY(-5px) scale(1.1);
+
   filter: drop-shadow(0 0 8px var(--primary-color));
 }
 
 /* Texto de Créditos */
+
 .footer-credits p {
   color: var(--secondary-color);
+
   font-size: 1rem;
+
   margin: 0;
 }
 
 .highlight {
   color: var(--primary-color);
+
   font-weight: 600;
 }
 
 /* Divisória Fina */
+
 .footer-divider {
   width: 100px;
+
   height: 2px;
+
   background: radial-gradient(
     circle,
     var(--tertiary-color) 0%,
+
     transparent 100%
   );
+
   opacity: 0.5;
 }
 
 /* Texto Legal (Disclaimer) */
+
 .footer-legal p {
   color: #4a4a4a;
+
   font-size: 0.75rem;
+
   line-height: 1.4;
+
   max-width: 600px;
+
   margin: 0;
 }
 
-/* --- BLOQUEIO DE SELEÇÃO (UI FEELING) --- */
+/* --- BLOQUEIO DE SELEÇÃO --- */
+
 header,
 button,
 .btn-filtro,
@@ -935,96 +1443,226 @@ button,
 .search-box i,
 img {
   -webkit-user-select: none;
+
   -moz-user-select: none;
+
   -ms-user-select: none;
+
   user-select: none;
+
   -webkit-user-drag: none;
 }
 
-/* Permite seleção apenas nos textos importantes */
+/* Permite seleção apenas nos textos */
+
 .modal-content p,
 .modal-content h2,
 .modal-content h3,
 .modal-content h4,
 .skin-card p {
   user-select: text;
+
   cursor: text;
 }
 
 /* --- SELEÇÃO DE TEXTO PERSONALIZADA --- */
+
 ::selection {
   background: var(--primary-color);
+
   color: #091428;
+
   text-shadow: none;
 }
 
+/* --- CURSOR PERSONALIZADO --- */
+
+body {
+  /* Define cursores personalizados para melhorar a imersão temática. */
+  cursor: url("cursor.png"), auto;
+}
+
+a,
+button,
+i,
+input,
+.card,
+.btn-filtro,
+.skin-card,
+.header-logo-right,
+.btn-fechar {
+  cursor: url("cursor-hover.png"), pointer;
+}
+
+.modal-content,
+header {
+  cursor: url("cursor.png"), auto;
+}
+
 /* --- BARRA DE ROLAGEM PERSONALIZADA (CROSS-BROWSER) --- */
+
 * {
-  scrollbar-width: thin;
+  scrollbar-width: thin; /* Padrão Firefox para estilização da barra de rolagem. */
+
   scrollbar-color: #c89b3c #060c18;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
+
   height: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: #060c18;
 }
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #c89b3c 0%, #a07a2b 100%);
+
   border-radius: 5px;
+
   border: 2px solid #060c18;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #e0b456;
 }
 
+/* --- CONTROLES DE SCROLL --- */
+
+.scroll-controls {
+  position: fixed;
+
+  bottom: 20px;
+
+  right: 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  z-index: 2000; /* Z-index alto para garantir que os botões fiquem acima de tudo. */
+
+  pointer-events: none; /* Permite clicar "através" do container, mas não dos botões filhos. */
+}
+
+.scroll-controls button {
+  pointer-events: auto; /* Reativa o clique nos botões que foi desativado no container pai. */
+
+  background: rgba(10, 20, 40, 0.8);
+
+  backdrop-filter: blur(5px);
+
+  border: 1px solid var(--primary-color);
+
+  color: var(--primary-color);
+
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  font-size: 1.5rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition: all 0.3s ease;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-controls button:hover {
+  background: var(--primary-color);
+
+  color: var(--bg-color);
+
+  transform: translateY(-3px) scale(1.1);
+
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+.hide {
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform: translateY(20px);
+}
+
 /* --- RESPONSIVIDADE DEFINITIVA --- */
 
-/* 1. TABLET E PC (Layout Centralizado Premium) */
+/* 1. TABLET E DESKTOP (A partir de 768px) */
+
 @media (min-width: 768px) {
   header {
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
+
     padding-top: 2rem;
+
     padding-bottom: 2rem;
+
     gap: 1.5rem;
   }
 
   .header-title {
     margin-right: 0;
+
     transform: scale(1.2);
   }
 
   .search-box {
     width: 100%;
+
     max-width: 700px;
+
     margin: 0;
+
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(0, 0, 0, 0.5);
   }
 
   .filtros-container {
     width: 100%;
+
     order: 3;
+
     margin-top: 0.5rem;
+
     justify-content: center;
+
     padding: 0;
+
     gap: 1rem;
   }
 
   .btn-filtro {
     padding: 0.6rem 1.5rem;
+
     font-size: 0.95rem;
   }
 }
 
-/* 2. CELULAR (Layout Scroll Horizontal) */
+/* 2. MOBILE (Até 768px) */
+
 @media (max-width: 768px) {
   header {
     flex-direction: column;
+
     padding: 1rem;
+
     gap: 1rem;
   }
 
@@ -1034,6 +1672,7 @@ img {
 
   .header-title h1 {
     font-size: 1.5rem;
+
     white-space: nowrap;
   }
 
@@ -1047,69 +1686,216 @@ img {
 
   .filtros-container {
     display: flex;
+
     flex-wrap: nowrap;
-    overflow-x: auto;
+
+    overflow-x: auto; /* Permite que a barra de filtros seja rolável horizontalmente em telas menores. */
+
     justify-content: flex-start;
+
     width: 100%;
+
     padding-bottom: 0.5rem;
+
     -webkit-overflow-scrolling: touch;
+
     scrollbar-width: none;
   }
 
   .filtros-container::-webkit-scrollbar {
+    /* Esconde a barra de rolagem do container de filtros no Chrome/Safari. */
     display: none;
   }
 
   .btn-filtro {
     flex: 0 0 auto;
+
     white-space: nowrap;
+
     font-size: 0.85rem;
+
     padding: 0.5rem 1.2rem;
   }
 
   /* Ajustes do Modal no Celular */
+
   .modal-info {
     grid-template-columns: 1fr;
+
     gap: 2rem;
+
     padding: 1.5rem;
   }
+
   .info-coluna-lore p {
     max-height: none;
+
     overflow-y: visible;
   }
+
   .modal-header-text h2 {
     font-size: 2.2rem;
   }
+
   .modal-img-container {
     height: 250px;
   }
 
   /* Ajuste botões laterais */
+
   .scroll-controls {
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 15px;
+
+    right: 15px;
   }
+
   .scroll-controls button {
     width: 40px;
+
     height: 40px;
+
     font-size: 1.2rem;
+  }
+
+  /* Correção Botão Fechar no Mobile */
+
+  .btn-fechar {
+    margin-bottom: 0;
+
+    margin-right: 5px;
+
+    top: 10px;
+
+    width: 45px;
+
+    height: 45px;
+
+    font-size: 1.5rem;
+
+    background: #091428;
+
+    opacity: 1;
+
+    z-index: 9999;
   }
 }
 
-/* 3. AJUSTE PARA TELAS MUITO PEQUENAS (320px) */
+/* 3. AJUSTE PARA TELAS MUITO PEQUENAS (Até 400px) */
+
 @media (max-width: 400px) {
   .header-title {
     gap: 0.3rem;
   }
+
   header h1 {
     font-size: 1.1rem;
+
     letter-spacing: 1px;
   }
+
   .header-title i {
     font-size: 1.5rem;
   }
+
   .header-logo-right {
     height: 25px;
+
     margin-left: 0.3rem;
+  }
+}
+
+/* --- SEÇÃO DE DICAS --- */
+.tips-section {
+  padding: 0 2rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  border-top: 1px solid rgba(200, 155, 60, 0.2); /* Separador sutil */
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+.tips-box h3 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tips-box ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.tips-box li {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.tips-box li::marker {
+  color: var(--primary-color); /* Bolinha dourada */
+}
+
+/* --- LINKS DE BUILD --- */
+.build-links {
+  padding: 0 2rem 3rem 2rem;
+  text-align: center;
+}
+
+.build-links p {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.build-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-build {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1e2328;
+  color: #f0e6d2;
+  padding: 0.8rem 2.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid var(--tertiary-color);
+  font-weight: 700;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+
+.btn-build img {
+  height: 26px; /* Altura fixa para consistência. */
+  width: auto; /* Largura se ajusta para manter a proporção do logo. */
+  border-radius: 4px;
+  object-fit: contain; /* Garante que a imagem não estique */
+  max-width: 70px; /* Uma trava de segurança para logos excessivamente largos */
+}
+
+.btn-build:hover {
+  border-color: var(--primary-color);
+  background: rgba(200, 155, 60, 0.1);
+  transform: translateY(-3px);
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajuste Mobile */
+@media (max-width: 768px) {
+  .tips-section {
+    grid-template-columns: 1fr; /* Uma coluna no celular */
+    gap: 1rem;
   }
 }
