@@ -1,8 +1,8 @@
 # 💎 Códice Hextech | Guia de Campeões LoL
 
-![Status](http://img.shields.io/static/v1?label=STATUS&message=FINALIZADO&color=c89b3c&style=for-the-badge)
+![Status](http://img.shields.io/static/v1?label=STATUS&message=FINALIZADO&color=0ac975&style=for-the-badge)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![CSS3](https://img.shields.io/badge/css-%231572B6.svg?style=for-the-badge&logo=css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
 
