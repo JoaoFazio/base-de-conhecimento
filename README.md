@@ -1,5 +1,5 @@
 # 💎 Códice Hextech | Guia de Campeões LoL
-🔗 Teste o projeto ao vivo: https://joaofazio.github.io/codice_hextec/
+🔗 **Teste o projeto ao vivo:** https://joaofazio.github.io/codice_hextec/
 
 ![Status](http://img.shields.io/static/v1?label=STATUS&message=FINALIZADO&color=0ac975&style=for-the-badge)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -17,7 +17,7 @@ Uma aplicação web interativa e imersiva que consome a API oficial da Riot Game
 
 | 🖥️ Navegação & Gráficos | 🎨 Galeria de Skins | 📱 Mobile (Responsivo) |
 | :---: | :---: | :---: |
-| <video src="https://github.com/user-attachments/assets/343d91dc-a3ad-4baf-bc2f-c35605996b5a" width="100%" autoplay loop muted playsinline></video> | <video src="https://github.com/user-attachments/assets/3c0e5560-1510-4c92-8701-f4c67fc8a751" width="100%" autoplay loop muted playsinline></video> | <img src="assets/demo-mobile.gif" width="100%"> |
+| ![Demo Desktop](https://github.com/user-attachments/assets/affae338-a148-459c-aae2-3cab376e26d5) | ![Demo Skins](https://github.com/user-attachments/assets/343d91dc-a3ad-4baf-bc2f-c35605996b5a) | ![Demo Mobile](https://github.com/user-attachments/assets/3c0e5560-1510-4c92-8701-f4c67fc8a751) |
 | *Busca em Tempo Real e Chart.js* | *Fundo Dinâmico e Scroll* | *Carrossel Touch e Layout Adaptável* |
 
 ---
@@ -36,22 +36,46 @@ O projeto aplica os conceitos fundamentais da Imersão com foco total na Experi�
 * **Identidade Visual:** Estilização CSS inspirada no cliente oficial do jogo, utilizando variáveis CSS e Flexbox/Grid para organização.
 * **Responsividade:** Layout adaptável que funciona em celulares, tablets e desktops.
 * **Galeria de Skins:** Um modal extra para visualização das artes dos campeões com fundo dinâmico.
-* **Micro-interações:** Scroll suave, animações, botões flutuantes e efeitos de hover.
+* **Micro-interações:** Detalhes como barras de rolagem personalizadas, efeitos de *hover* e botões de navegação para melhorar a usabilidade.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **HTML5 Semântico**
-* **CSS3 (Flexbox, Grid, Variáveis, Animações)**
-* **JavaScript ES6 (Async/Await, Fetch API)**
-* **Chart.js**
-* **Phosphor Icons**
+* **HTML5 Semântico:** Estrutura acessível e organizada.
+* **CSS3 Moderno:** Flexbox, CSS Grid, Variáveis (:root), Animações (@keyframes) e Media Queries.
+* **JavaScript (ES6+):** Manipulação de DOM, Async/Await, Fetch API e Event Listeners.
+* **Bibliotecas:**
+    * [Chart.js](https://www.chartjs.org/) (Gráficos)
+    * [Phosphor Icons](https://phosphoricons.com/) (Ícones Vetoriais)
 
 ---
 
 ## 🚀 Como rodar localmente
 
-1. Clone o projeto:
-```bash
-git clone https://github.com/joaofazio/codice_hextec.git
+1.  Clone o projeto:
+    ```bash
+    git clone [https://github.com/joaofazio/codice_hextec.git](https://github.com/joaofazio/codice_hextec.git)
+    ```
+2.  Entre na pasta:
+    ```bash
+    cd codice_hextec
+    ```
+3.  Abra o arquivo `index.html` no seu navegador ou use o **Live Server** do VS Code para uma experiência completa.
+
+---
+
+## ⚖️ Aviso Legal (Disclaimer)
+
+> *"Códice Hextech foi criado sob a política de 'Legal Jibber Jabber' da Riot Games usando ativos de propriedade da Riot Games. A Riot Games não endossa ou patrocina este projeto."*
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **João Gabriel Fazio Pauli**.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/joão-gabriel-fazio-861186338/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/joaoFazio)
+
+---
