@@ -12,20 +12,13 @@
 Uma aplicação web interativa e imersiva que consome a API oficial da Riot Games (Data Dragon) para exibir dados detalhados, histórias e estatísticas de todos os campeões de League of Legends em tempo real.
 
 ---
-# 📱 Preview do Projeto
 
-## 🖥️ Navegação & Gráficos
-<video src="assets/demo-desktop.mp4" width="100%" autoplay loop muted playsinline></video>
+## 📱 Preview do Projeto
 
----
-
-## 🎨 Galeria de Skins
-<video src="assets/demo-skins.mp4" width="100%" autoplay loop muted playsinline></video>
-
----
-
-## 📱 Mobile (Responsivo)
-<video src="assets/demo-mobile.mp4" width="100%" autoplay loop muted playsinline></video>
+| 🖥️ Navegação & Gráficos | 🎨 Galeria de Skins | 📱 Mobile (Responsivo) |
+| :---: | :---: | :---: |
+| <video src="assets/demo-desktop.mp4" width="100%" autoplay loop muted playsinline></video> | <video src="assets/demo-skins.mp4" width="100%" autoplay loop muted playsinline></video> | <video src="assets/demo-mobile.mp4" width="100%" autoplay loop muted playsinline></video> |
+| *Busca em Tempo Real e Chart.js* | *Fundo Dinâmico e Scroll* | *Carrossel Touch e Layout Adaptável* |
 
 ---
 
