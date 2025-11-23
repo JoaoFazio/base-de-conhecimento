@@ -17,7 +17,7 @@ Uma aplicação web interativa e imersiva que consome a API oficial da Riot Game
 
 | 🖥️ Navegação & Gráficos | 🎨 Galeria de Skins | 📱 Mobile (Responsivo) |
 | :---: | :---: | :---: |
-| ![Demo Desktop](https://github.com/user-attachments/assets/affae338-a148-459c-aae2-3cab376e26d5) | ![Demo Skins](https://github.com/user-attachments/assets/343d91dc-a3ad-4baf-bc2f-c35605996b5a) | ![Demo Mobile](https://github.com/user-attachments/assets/3c0e5560-1510-4c92-8701-f4c67fc8a751) |
+| <video src="https://github.com/user-attachments/assets/affae338-a148-459c-aae2-3cab376e26d5" width="100%" autoplay loop muted playsinline></video> | <video src="https://github.com/user-attachments/assets/343d91dc-a3ad-4baf-bc2f-c35605996b5a" width="100%" autoplay loop muted playsinline></video> | <video src="https://github.com/user-attachments/assets/3c0e5560-1510-4c92-8701-f4c67fc8a751" width="100%" autoplay loop muted playsinline></video> |
 | *Busca em Tempo Real e Chart.js* | *Fundo Dinâmico e Scroll* | *Carrossel Touch e Layout Adaptável* |
 
 ---
