@@ -1,3 +1,4 @@
+# 🏆 PROJETO PREMIADO: Selecionado no TOP 6 entre milhares de projetos na Imersão Dev 10 (Alura + Google).
 # 💎 Códice Hextech | Guia de Campeões LoL
 🔗 **Teste o projeto ao vivo:** https://joaofazio.github.io/codice_hextec/
 
